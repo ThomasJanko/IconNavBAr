@@ -4,12 +4,16 @@
   box-sizing: border-box;
 
 }
+
+:root{
+    --clr: black;
+}
 body{
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: black;
+    background: var(--clr);
 }
 
 .navigation{
@@ -54,32 +58,86 @@ body{
     line-height: 65px;
     font-size: 1.5em;
     transition: 0.5s;
-    color: blue;
+    color: var(--clr);
 }
 
 .navigation ul li.active a .icon{
-    transform: translateY(-32px);
-    color: cyan;
+    transform: translateY(-35px);
+    z-index: 1;
+    color: black;
 }
 
 .navigation ul li a .text{
     position:  absolute;
-    background: cyan;
-    color: white;
-    padding: 2px 7px;
-    border-radius: 12px;
+    color: var(--clr);
+    /* padding: 2px 7px;
+    border-radius: 12px; */
     font-weight: 400;
     font-size: 0.75em;
     letter-spacing: 0.05em;
     transition: 0.5s;
     opacity: 0;
     z-index: 2;
-    transform: translateY(15px);
+    transform: translateY(20px);
 }
 
+
 .navigation ul li.active a .text{
-    transform: translateY(-4px);
+    transform: translateY(10px);
     opacity: 1;
 }
+
+.indicator{
+    position: absolute;
+    top: -70%;
+    width: 70px;
+    height: 70px;
+    background: lightgreen;
+    border-radius: 50%;
+    border: 5px solid var(--clr);
+    transition: 0.5s;
+}
+
+.indicator::before{
+    content: '';
+    position: absolute;
+    top: 61%;
+    left: -17px;
+    width: 19px;
+    height: 20px;
+    background: transparent;
+    border-top-right-radius: 20px;
+    box-shadow: 0px -10px 0 0 var(--clr);
+}
+
+.indicator::after{
+    content: '';
+    position: absolute;
+    top: 61%;
+    right: -17px;
+    width: 19px;
+    height: 20px;
+    background: transparent;
+    border-top-left-radius: 20px;
+    box-shadow: 0px -10px 0 0 var(--clr);
+}
+
+.navigation ul li:nth-child(1).active ~ .indicator{
+    transform: translateX(calc(70px * 0));
+}
+.navigation ul li:nth-child(2).active ~ .indicator{
+    transform: translateX(calc(70px * 1));
+}
+.navigation ul li:nth-child(3).active ~ .indicator{
+    transform: translateX(calc(70px * 2));
+}
+.navigation ul li:nth-child(4).active ~ .indicator{
+    transform: translateX(calc(70px * 3));
+}
+.navigation ul li:nth-child(5).active ~ .indicator{
+    transform: translateX(calc(70px * 4));
+}   
+
+
 
 
